@@ -45,6 +45,14 @@ app.use(
 // Connect flash middleware
 app.use(flash());
 
+// Global variables middleware
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  next();
+});
+
 // Index route
 app.get('/', (req, res) => {
   const title = 'Welcome';
