@@ -42,6 +42,11 @@ app.get('/ideas/add', (req, res) => {
   res.render('ideas/add');
 });
 
+// Idea Index route
+app.get('/ideas', (req, res) => {
+  res.render('ideas/index');
+});
+
 // Process Idea Form
 app.post('/ideas', (req, res) => {
   let errors = [];
