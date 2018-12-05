@@ -1,6 +1,7 @@
 'use strict';
 const express = require('express');
 const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
 
@@ -21,6 +22,10 @@ const Idea = mongoose.model('ideas');
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
+// Body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 // Index route
 app.get('/', (req, res) => {
   const title = 'Welcome';
@@ -39,6 +44,8 @@ app.get('/ideas/add', (req, res) => {
 
 // Process Idea Form
 app.post('/ideas', (req, res) => {
+  console.log(req.body);
+
   res.send('ok');
 });
 
