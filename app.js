@@ -139,6 +139,16 @@ app.delete('/ideas/:id', (req, res) => {
   });
 });
 
+// User Login Route
+app.get('/users/login', (req, res) => {
+  res.send('login');
+});
+
+// User Register Route
+app.get('/users/register', (req, res) => {
+  res.send('register');
+});
+
 // Server
 const port = 8080;
 app.listen(port, () => console.log(`Server started on port ${port}`));
