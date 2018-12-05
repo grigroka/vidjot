@@ -44,7 +44,11 @@ app.get('/ideas/add', (req, res) => {
 
 // Idea Index route
 app.get('/ideas', (req, res) => {
-  res.render('ideas/index');
+  Idea.find({})
+    .sort({ date: 'desc' })
+    .then(ideas => {
+      res.render('ideas/index', { ideas });
+    });
 });
 
 // Process Idea Form
