@@ -32,9 +32,14 @@ app.get('/about', (req, res) => {
   res.render('about');
 });
 
-// Add Idea form
+// Add Idea Form
 app.get('/ideas/add', (req, res) => {
   res.render('ideas/add');
+});
+
+// Process Idea Form
+app.post('/ideas', (req, res) => {
+  res.send('ok');
 });
 
 const port = 8080;
