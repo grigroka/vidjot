@@ -42,6 +42,15 @@ app.get('/ideas/add', (req, res) => {
   res.render('ideas/add');
 });
 
+// Edit Idea Form
+app.get('/ideas/edit/:id', (req, res) => {
+  Idea.findOne({
+    _id: req.params.id
+  }).then(idea => {
+    res.render('ideas/edit', { idea });
+  });
+});
+
 // Idea Index route
 app.get('/ideas', (req, res) => {
   Idea.find({})
