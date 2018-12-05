@@ -44,9 +44,23 @@ app.get('/ideas/add', (req, res) => {
 
 // Process Idea Form
 app.post('/ideas', (req, res) => {
-  console.log(req.body);
+  let errors = [];
+  if (!req.body.title) {
+    errors.push({ text: 'Please add a title' });
+  }
+  if (!req.body.details) {
+    errors.push({ text: 'Please add some details' });
+  }
 
-  res.send('ok');
+  if (errors.length > 0) {
+    res.render('ideas/add', {
+      errors,
+      title: req.body.title,
+      details: req.body.details
+    });
+  } else {
+    res.send('passed');
+  }
 });
 
 const port = 8080;
