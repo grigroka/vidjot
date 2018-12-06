@@ -50,6 +50,10 @@ app.use(
   })
 );
 
+// Passport middleware (improtant! init after express session!)
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Connect flash middleware
 app.use(flash());
 
