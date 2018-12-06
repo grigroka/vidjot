@@ -9,7 +9,13 @@ const User = mongoose.model('users');
 module.exports = function(passport) {
   passport.use(
     new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
-      console.log(password);
+      User.findOne({
+        email
+      }).then(user => {
+        if (!user) {
+          return done(null, false, { message: 'No User Found' });
+        }
+      });
     })
   );
 };
